@@ -19,6 +19,29 @@ class ControladorDeUsuario {
         .json({ erro: error.message || "Erro ao buscar usuários." });
     }
   }
+}
+
+
+pegarUmPeloID(req, res) {
+try{
+
+const id = req.params.id;
+const usuarios = servicoDeUsuario;pegarUmPeloID(id)
+
+
+if (usuario.length == 0) {
+  return res
+.status(404)
+.json({messagem: "Nenhum usuário foi encontrado"});
+
+}
+
+res.status(200).json(usuario);
+} catch (error) {
+  res 
+  .status(500)
+  .json({ erro: error.message || "Erro ao buscar usuários."});
+}
 
   cadastrar(req, res) {
     try {
@@ -36,6 +59,7 @@ class ControladorDeUsuario {
         .json({ erro: error.message || "Erro ao buscar usuários." });
     }
   }
+  
 
   conectar(req, res) {
     try {
@@ -54,7 +78,11 @@ class ControladorDeUsuario {
 
       res.status(500).json({ erro: error.message });
     }
-  }
-}
+    
+    
+    
+  } 
+
+
 
 module.exports = new ControladorDeUsuario();
